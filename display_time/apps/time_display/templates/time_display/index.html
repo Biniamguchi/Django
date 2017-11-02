@@ -1,0 +1,22 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+        {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'styles/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+      <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
+      </head>
+    <body>
+        
+        <!-- <div class="line">{{first_name}}</div> -->
+        <form action="/time_display/index" method="post">
+          {% csrf_token %}
+        <div><textarea name="desc" placeholder="Current Time and Date"></textarea></div><br><br>
+        <div><textarea name="text" name="name" placeholder="{{time}}"></textarea></div><br><br>
+          
+        
+            
+        </form>
+    </body>
+  </html>

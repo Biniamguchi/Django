@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travels</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<style type="text/css">
+	.jumbotron {
+		border-radius: 0px !important;
+	}
+</style>
+
+<div class="container">
+
+	<div class="jumbotron">
+		<h1>Travel Schedules</h1>
+	</div>
+
+	<div class="col-sm-5">
+		<div class="alert alert-success">
+			<h1>Welcome Back: {{ request.session.user.name }}</h1>
+		</div>
+	</div>
+
+	<div class="col-sm-7">	
+		<a href="/session/delete" class="pull-right"><button class="btn btn-danger">Logout</button></a>
+
+	</div>
+
+	<div class="col-sm-12">
+
+	<table class="table table-striped table-hover">
+		<!-- <table border=4"> -->
+			<tr>
+				<th>Destination</th>				
+				<th>Travel Date From</th>
+				<th>Travel Date To</th>
+				<th>Description</th>
+				<th>Do You Want to Leave?</th>				
+			</tr>
+			{% for travel in travels %}
+				<tr>				
+					<td>
+						<a href="/create/{{ travel.id }}">{{ travel.travel.destination}}</a>
+					</td>					
+					<td>{{ travel.travel.travel_date_from }}</td>
+					<td>{{ travel.travel.travel_date_to }}</td>
+					<td>{{ travel.travel.description }}</td>
+					<td><a href="/leave/{{ travel.id }}">Leave</a></td>
+									
+				</tr>
+			{% endfor %}
+	</table>
+	<table class="table table-striped table-hover">
+		<!-- <table border=4"> -->
+			<tr>
+				<th>Name</th>
+				<th>Destination</th>			
+				<th>Travel Date From</th>
+				<th>Travel Date To</th>
+				<th>Do you want to join?</th>
+				
+			</tr>
+			{% for travel in allTravels %}
+				<tr>
+					<td>{{ travel.creator.name }}</td>
+					<!-- <td>{{ travel.travel.name }}</td> -->				
+					<td>
+						<a href="/create/{{ travel.id }}">{{ travel.destination }}</a>
+					</td>										
+					<td>{{ travel.travel_date_from }}</td>
+					<td>{{ travel.travel_date_to }}</td>					
+					<td><a href="/join/{{ travel.id }}">Join</a></td>				
+				</tr>
+			{% endfor %}
+	</table>
+			<a href="/travels/new" class="pull-right">Add Travel Plan </a>
+</body>
+</html>

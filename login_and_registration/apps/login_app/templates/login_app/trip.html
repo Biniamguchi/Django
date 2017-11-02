@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html>
+<head>
+	<title> Trips</title>
+</head>
+<body>
+	 	<ul>
+			<li>Destination</li> 			
+			<li>Description</li>
+			<li>Travel Date From</li>
+			<li>Travel Date To</li>
+		<ul>	
+			
+		
+		{% for travel in travels %}
+			<ul>
+				<li>{{ travel.destination }}</li>
+				<li>{{ travel.description }}</li>x
+				<li>{{ travel.travel_date_from }}</li>
+				<li>{{ travel.travel_date_to }}</li>
+				<h1 class="heading"> {{request.session.travel}}!</h1>
+    			
+								
+			</ul>
+		{% endfor %}
+	
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Destination </title>	
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- {{ travel }} -->
+<style type="text/css">
+		.jumbotron {
+			border-radius: 0px !important;
+		}
+	</style>
+
+	<div class="container">
+
+		<div class="jumbotron">
+			<h1>Destination</h1>
+		</div>
+		<div class="col-sm-12">		
+			<a href="/session/delete" class="pull-right"><button class="btn btn-danger">Logout</button></a>
+		
+			<a href="/travels" class="pull-right"><button class="btn btn-primary">Home</button></a>
+		</div>
+
+
+<!-- <h3> {{ travel.travel.name }} </h3> -->
+
+<!-- {% if not voted %} -->
+
+<!-- <form action="/travel/{{ travel.id }}" method="post">
+	{% csrf_token %}
+	<ul>
+		Planned by: <P> {{ travel.name }}</P>
+		Description: <P> {{ travel.description }}</P>
+		Travel Date from: <P> {{ travel.travel_date_from }}</P>
+		Travel Date: <P> {{ travel.travel_date_to }}</P>
+	</ul>
+</form> -->
+
+<!-- {% else %} -->
+
+<!-- <p>your friends trip plan is ..</p>
+
+{{ travel.travel.all.0.travel_id }}
+
+{{ results }} -->
+
+<!-- {% endif %} -->
+
+<div class="">
+                <h1>{{ travel.destination }}</h1>
+                <b>Planned by:</b> {{ travel.creator.username }} <br>
+                <b>Description:</b> {{ travel.description }}<br>
+                <b>Travel Start Date:</b> {{ travel.travel_date_from|date:"M d, Y" }}<br>
+                <b>Travel Date to:</b> {{ travel.travel_date_to|date:"M d, Y" }}<br>
+            </div>
+            <div class="">
+                <b>Other Users Joining:</b>
+                {% if all_users %}
+                    <ul>
+                        {% for user in all_users %}
+                            {% if user.id == travel.id %}
+                                {{ pass }}
+                            {% else %}
+                                <li>{{ user.username}} </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                <!-- {% endif %} -->
+            </div>
+
+</body>
+</html>
